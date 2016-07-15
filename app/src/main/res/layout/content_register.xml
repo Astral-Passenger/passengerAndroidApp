@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.spacebartechnologies.connormyers.passenger.Register"
+    tools:showIn="@layout/activity_register">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_layout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_layout_email"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/register_layout_name"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_input_email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_layout_password"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/register_layout_email"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_input_password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_below="@id/register_layout_password"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/sign_in_button"
+        android:textColor="@android:color/white"
+        android:text="Register"/>
+
+    <TextView
+        android:id="@+id/or_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_button"
+        android:text="or"
+        android:textColor="#aaa"
+        android:layout_marginTop="24sp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/register_facebook_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Register with facebook"
+        android:layout_below="@+id/or_text"
+        android:textColor="@android:color/white"
+        android:background="@drawable/facebook_button"
+        android:layout_marginTop="24dp"/>
+
+
+</RelativeLayout>

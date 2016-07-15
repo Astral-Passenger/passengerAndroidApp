@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.spacebartechnologies.connormyers.passenger">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".PassengerApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/android_launcher_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyMaterialTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PointsHistory"
+            android:label="@string/title_activity_points_history"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Rewards"
+            android:label="@string/title_activity_rewards"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RewardsHistory"
+            android:label="@string/title_activity_rewards_history"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoggedOutFirstScreen"
+            android:label="@string/title_activity_logged_out_first_screen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignIn"
+            android:label="@string/title_activity_sign_in"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.spacebartechnologies.connormyers.passenger.LoggedOutFirstScreen" />
+        </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.spacebartechnologies.connormyers.passenger.LoggedOutFirstScreen" />
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".SignIn"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.spacebartechnologies.connormyers.passenger.SignIn" />
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Passenger</string>
+    <string name="action_settings">Settings</string>
+    <string name="dummy_section_text">Section %1d is just a dummy section.</string>
+    <string name="demo_external_activity">Demo External Activity</string>
+    <string name="demo_collection">Demo Collection</string>
+    <string name="title_activity_collection_demo">CollectionDemoActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="one">Home</string>
+    <string name="two">Profile</string>
+    <string name="three">More</string>
+    <string name="title_activity_points_history">PointsHistory</string>
+    <string name="title_activity_rewards">Rewards</string>
+    <string name="title_activity_rewards_history">RewardsHistory</string>
+    <string name="title_activity_logged_out_first_screen">LoggedOutFirstScreen</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_sign_in">SignIn</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="preference_file_key">"com.SpacebarTechnologies.Passenger.USER_DATA_FILE_KEY"</string>
+</resources>
