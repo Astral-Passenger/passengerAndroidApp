@@ -6,84 +6,116 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.util.LruCache;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
-import com.firebase.client.AuthData;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import org.w3c.dom.Comment;
 
 public class SplashScreen extends AppCompatActivity {
 
     private LruCache<String, Bitmap> mMemoryCache;
+    private FirebaseUser currentUser;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        Firebase.setAndroidContext(this);
-        FirebaseFuncs firebase = new FirebaseFuncs();
-        final AuthData authData = firebase.ref.getAuth();
-
         final Handler splashScreenHandler = new Handler();
+
         splashScreenHandler.postDelayed(new Runnable() {
-
             public void run() {
-
-                if (authData != null) {
+                currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (currentUser != null) {
                     // user authenticated
-                    Log.e("Auth State", "The user is logged in");
-                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(intent);
+                    loadUserData();
                 } else {
                     // no user authenticated
                     Log.e("Auth State", "The user is not logged in");
                     Intent intent = new Intent(getApplicationContext(), LoggedOutFirstScreen.class);
                     startActivity(intent);
                 }
-
             }
         }, 5000);
-        loadUserData();
+
     }
 
     private void loadUserData() {
         Context context = this;
         final SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        FirebaseFuncs firebase = new FirebaseFuncs();
-        final AuthData authData = firebase.ref.getAuth();
-        String userID = authData.getUid();
-        Firebase userExactRef = firebase.usersRef.child("" + userID);
 
-        userExactRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String name = (String) dataSnapshot.child("name").getValue();
-                Double currentPoints = (Double) dataSnapshot.child("currentPoints").getValue();
-                int currentPointsInt = (int) Math.floor(currentPoints);
-                String base64Image = (String) dataSnapshot.child("profileImage").getValue();
+        FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get user information
+                        final String name = (String) dataSnapshot.child("name").getValue();
+                        final Double currentPoints = (Double) dataSnapshot.child("currentPoints").getValue();
+                        final int currentPointsInt = (int) Math.floor(currentPoints);
+                        final Double totalPoints = (Double) dataSnapshot.child("totalPoints").getValue();
+                        final int totalPointsInt = (int) Math.floor(totalPoints);
+                        final long rewardsReceived = (long) dataSnapshot.child("rewardsReceived").getValue();
+                        final Double distanceTraveled = (Double) dataSnapshot.child("distanceTraveled").getValue();
+                        final long distanceTraveledInt = (long) Math.floor(distanceTraveled);
+                        final long timeSpentDriving = (long) dataSnapshot.child("timeSpentDriving").getValue();
+                        final String imageLocation = (String) dataSnapshot.child("imageLocation").getValue();
 
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("name", name);
-                editor.putInt("currentPoints", currentPointsInt);
-                editor.putString("profileImage", base64Image);
-                editor.commit();
-            }
+                        StorageReference storageRef = storage.getReferenceFromUrl(imageLocation);
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+                        final long ONE_MEGABYTE = 3000 * 3000;
+                        storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            @Override
+                            public void onSuccess(byte[] bytes) {
+                                String profileImageBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putString("name", name);
+                                editor.putInt("currentPoints", currentPointsInt);
+                                editor.putString("imageLocation", profileImageBase64);
+                                editor.putInt("totalPoints",totalPointsInt);
+                                editor.putLong("rewardsReceived",rewardsReceived);
+                                editor.putLong("distanceTraveled",distanceTraveledInt);
+                                editor.putLong("timeSpentDriving", timeSpentDriving);
+                                editor.commit();
+                                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                                Log.e("ERROR", "" + exception);
+                            }
+                        });
+                    }
 
-            }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     };
 
 }

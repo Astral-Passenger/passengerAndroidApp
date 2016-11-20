@@ -29,8 +29,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseFuncs firebase = new FirebaseFuncs();
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -107,9 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadUserData() {
         // Attach an listener to read the data at our posts reference
-        final AuthData authData = firebase.ref.getAuth();
-        String email = authData.getProviderData().get("email").toString();
-        Log.e("ID", authData.getUid());
+
     }
 
     private void setupTabIcons() {

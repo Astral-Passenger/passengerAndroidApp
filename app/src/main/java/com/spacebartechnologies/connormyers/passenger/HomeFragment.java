@@ -96,21 +96,22 @@ public class HomeFragment extends Fragment {
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         String name = sharedPref.getString("name","Temp");
         int currentPoints = sharedPref.getInt("currentPoints", 0);
-        String base64Image = sharedPref.getString("profileImage", "");
-
+        String base64Image = sharedPref.getString("imageLocation", "");
+        Log.d("TAG: This is the image", base64Image);
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+//        Bitmap mutableBitmap = decodedByte.copy(Bitmap.Config.ARGB_8888, true);
+//        Canvas canvas = new Canvas(mutableBitmap);
+//        Paint mpaint = new Paint();
+//        mpaint.setAntiAlias(true);
+//        mpaint.setShader(new BitmapShader(mutableBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+//        canvas.drawRoundRect((new RectF(50, 100, 150, 150)), 0, 0, mpaint);// Round Image Corner 100 100 100 100
 
-        Canvas canvas = new Canvas(decodedByte);
-        Paint mpaint = new Paint();
-        mpaint.setAntiAlias(true);
-        mpaint.setShader(new BitmapShader(decodedByte, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-        canvas.drawRoundRect((new RectF(0, 0, decodedByte.getWidth(), decodedByte.getHeight())), 100, 100, mpaint);// Round Image Corner 100 100 100 100
         mUserProfilePictureHome.setImageBitmap(decodedByte);
 
         mUsersNameHome.setText(name);
         mCurrentPointsHome.setText(String.valueOf(currentPoints));
-        mUserProfilePictureHome.setImageBitmap(Bitmap.createScaledBitmap(decodedByte, 120, 120, false));
+        //mUserProfilePictureHome.setImageBitmap(Bitmap.createScaledBitmap(decodedByte, 120, 120, false));
     }
 
 }

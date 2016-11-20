@@ -1,14 +1,223 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f2f4f6"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/profileTopView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/two"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:paddingTop="24dp"
+        android:paddingBottom="16dp">
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/profile_home_image_card"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="42dp"
+            android:layout_gravity="center"
+            android:innerRadius="0dp"
+            android:layout_centerHorizontal="true"
+            android:shape="ring"
+            android:thicknessRatio="1.9">
+            <ImageView
+                android:id="@+id/profile_profile_image"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:src="@mipmap/app_icon"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+            </ImageView>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/userProfileNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Connor Myers"
+            android:layout_below="@id/profile_home_image_card"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#555"/>
+
+        <LinearLayout
+            android:id="@+id/timeSpentDrivingLayout"
+            android:layout_below="@+id/userProfileNameTextView"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/timeSpentDrivingProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorAccent"
+                android:textAlignment="center"
+                android:alpha="0.54"
+                android:text="0d 11h 32m"/>
+
+            <TextView
+                android:textColor="#aaa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="Time Spent Driving"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/currentTotalPointsLayout"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/timeSpentDrivingLayout"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="56dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight=".5"
+                android:id="@+id/currentPointsTextView"
+                android:layout_width="0dp"
+                android:textColor="#4C5766"
+                android:alpha="0.54"
+                android:text="82 current points"
+                android:textAlignment="center"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_weight=".5"
+                android:id="@+id/totalPointsTextView"
+                android:layout_width="0dp"
+                android:textColor="#4C5766"
+                android:text="145 total points"
+                android:alpha="0.54"
+                android:textAlignment="center"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rewardsReceivedLayoutProfile"
+        android:layout_below="@+id/profileTopView"
+        android:layout_width="match_parent"
+        android:background="@drawable/sign_in_button"
+        android:layout_marginTop="32dp"
+        android:layout_margin="8dp"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/milesDrivenLogo"
+            android:src="@mipmap/rewards_profile_logo"
+            android:layout_width="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/milesDrivenLogo"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:layout_centerVertical="true"
+            android:text="Rewards received"
+            android:textColor="#4a4a4a"
+            />
+        
+        <ImageView
+            android:id="@+id/rightTriangleRewardsReceived"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/next_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/rewardsReceivedDrivenProfile"
+            android:text="8"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/rightTriangleRewardsReceived"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/milesDrivenLayoutProfile"
+        android:layout_below="@+id/rewardsReceivedLayoutProfile"
+        android:layout_width="match_parent"
+        android:background="@drawable/sign_in_button"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/rewardsReceivedDrivenLogo"
+            android:src="@mipmap/miles_driven"
+            android:layout_width="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rewardsReceivedDrivenLogo"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:layout_centerVertical="true"
+            android:text="Miles driven"
+            android:textColor="#4a4a4a"
+            />
+
+        <ImageView
+            android:id="@+id/rightTriangleMilesDriven"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/next_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/milesDrivenProfile"
+            android:text="325"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/rightTriangleMilesDriven"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/milesDrivenLayoutProfile"
+        android:layout_marginTop="24dp"
+        android:text="EDIT PROFILE"
+        android:textColor="#FFF"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:elevation="2dp"
+        android:background="@drawable/register_button"
+        />
 </RelativeLayout>

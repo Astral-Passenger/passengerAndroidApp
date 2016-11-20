@@ -37,7 +37,6 @@ public class Register extends AppCompatActivity {
         mEmailEditText = (EditText) findViewById(R.id.register_input_email);
         mPasswordEditText = (EditText) findViewById(R.id.register_input_password);
         mRegisterButton = (Button) findViewById(R.id.register_button);
-        mFacebookButton = (Button) findViewById(R.id.register_facebook_button);
 
         mRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

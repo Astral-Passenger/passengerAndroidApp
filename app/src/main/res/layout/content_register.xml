@@ -21,6 +21,7 @@
             android:id="@+id/register_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:hint="Name" />
 
     </android.support.design.widget.TextInputLayout>
@@ -37,6 +38,7 @@
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:hint="Email" />
 
     </android.support.design.widget.TextInputLayout>
@@ -53,6 +55,7 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:hint="Password" />
 
     </android.support.design.widget.TextInputLayout>
@@ -63,30 +66,9 @@
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/sign_in_button"
+        android:background="@drawable/register_button"
         android:textColor="@android:color/white"
         android:text="Register"/>
-
-    <TextView
-        android:id="@+id/or_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_button"
-        android:text="or"
-        android:textColor="#aaa"
-        android:layout_marginTop="24sp"
-        android:layout_centerHorizontal="true"
-        />
-
-    <Button
-        android:id="@+id/register_facebook_button"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Register with facebook"
-        android:layout_below="@+id/or_text"
-        android:textColor="@android:color/white"
-        android:background="@drawable/facebook_button"
-        android:layout_marginTop="24dp"/>
 
 
 </RelativeLayout>

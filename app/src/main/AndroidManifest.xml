@@ -14,22 +14,22 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PointsHistory"
             android:label="@string/title_activity_points_history"
-            android:theme="@style/MyMaterialTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".Rewards"
             android:label="@string/title_activity_rewards"
-            android:theme="@style/MyMaterialTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".RewardsHistory"
             android:label="@string/title_activity_rewards_history"
-            android:theme="@style/MyMaterialTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".LoggedOutFirstScreen"
             android:label="@string/title_activity_logged_out_first_screen"
@@ -49,8 +49,8 @@
         <activity
             android:name=".SignIn"
             android:label="@string/title_activity_sign_in"
-            android:theme="@style/MyMaterialTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.spacebartechnologies.connormyers.passenger.LoggedOutFirstScreen" />
@@ -67,13 +67,32 @@
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
-            android:screenOrientation="portrait"
             android:parentActivityName=".SignIn"
+            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.spacebartechnologies.connormyers.passenger.SignIn" />
         </activity>
+        <activity
+            android:name=".ProfileSettings"
+            android:label="@string/title_activity_profile_settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".HelpAndSupport"
+            android:label="@string/title_activity_help_and_support"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".HelpExpanded"
+            android:label="@string/title_activity_help_expanded"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".HelpFinal"
+            android:label="@string/title_activity_help_final"
+            android:theme="@style/MyMaterialTheme"></activity>
     </application>
 
 </manifest>
