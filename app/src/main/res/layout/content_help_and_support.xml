@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_help_and_support"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f4f6"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.spacebartechnologies.connormyers.passenger.HelpAndSupport"
+    tools:showIn="@layout/activity_help_and_support">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        android:elevation="2dp"
+        android:background="@drawable/sign_in_button"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/account_button"
+            android:layout_width="match_parent"
+            android:background="@drawable/sign_in_button"
+            android:layout_height="60dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee"
+                android:layout_alignParentBottom="true"/>
+
+            <ImageView
+                android:id="@+id/helpSupport1ImageView"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/account"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/helpSupport1ImageView"
+                android:text="Account"
+                android:textColor="#555"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/next_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/how_button"
+            android:layout_width="match_parent"
+            android:background="@drawable/sign_in_button"
+            android:layout_height="60dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee"
+                android:layout_alignParentBottom="true"/>
+
+            <ImageView
+                android:id="@+id/helpSupport2ImageView"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/how_help"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/helpSupport2ImageView"
+                android:text="How to use Passenger?"
+                android:textColor="#555"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/next_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/where_button"
+            android:layout_width="match_parent"
+            android:background="@drawable/sign_in_button"
+            android:layout_height="60dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee"
+                android:layout_alignParentBottom="true"/>
+
+            <ImageView
+                android:id="@+id/helpSupport3ImageView"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/miles_driven"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/helpSupport3ImageView"
+                android:text="Where to use Passenger?"
+                android:textColor="#555"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/next_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rewards_button"
+            android:layout_width="match_parent"
+            android:background="@drawable/sign_in_button"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/helpSupport4ImageView"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/rewards_help"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/helpSupport4ImageView"
+                android:text="Rewards"
+                android:textColor="#555"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/next_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

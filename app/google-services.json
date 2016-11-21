@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "858298712957",
+    "firebase_url": "https://passenger-app.firebaseio.com",
+    "project_id": "firebase-passenger-app",
+    "storage_bucket": "firebase-passenger-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858298712957:android:f9b2833d99221072",
+        "android_client_info": {
+          "package_name": "com.spacebartechnologies.connormyers.passenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858298712957-fcg7l1smrab7tuaioqkd6cc2hei53b98.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spacebartechnologies.connormyers.passenger",
+            "certificate_hash": "C7996D4DB359894E8F20E267748DB21BF2CCFDEE"
+          }
+        },
+        {
+          "client_id": "858298712957-3tb04snoo8jfljb6g0rfe53lce1g86mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZOzEVrP2QxFkesB8lrlVyAtE6AN2HitM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858298712957-djanuri5g0utcvlt9eertk546feht7da.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.SpacebarTechnologies.PassengerMobile"
+              }
+            },
+            {
+              "client_id": "858298712957-3tb04snoo8jfljb6g0rfe53lce1g86mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
