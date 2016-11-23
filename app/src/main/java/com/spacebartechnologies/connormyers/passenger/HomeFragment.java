@@ -6,11 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
@@ -21,14 +16,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.firebase.client.AuthData;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +59,7 @@ public class HomeFragment extends Fragment {
         mRewardsHistoryButtonLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent rewardsHistoryIntent = new Intent(getActivity(), RewardsHistory.class);
+                Intent rewardsHistoryIntent = new Intent(getActivity(), RewardsHistoryActivity.class);
                 startActivity(rewardsHistoryIntent);
             }
         });
