@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
         mPointsHistoryButtonLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pointsHistoryIntent = new Intent(getActivity(), PointsHistory.class);
+                Intent pointsHistoryIntent = new Intent(getActivity(), PointsHistoryActivity.class);
                 startActivity(pointsHistoryIntent);
             }
         });
