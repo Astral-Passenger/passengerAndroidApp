@@ -89,7 +89,7 @@ public class ProfileFragment extends Fragment {
         milesDrivenLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PointsHistory.class);
+                Intent intent = new Intent(context, PointsHistoryActivity.class);
                 startActivity(intent);
             }
         });

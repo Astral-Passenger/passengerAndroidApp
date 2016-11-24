@@ -9,14 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.spacebartechnologies.connormyers.passenger.PointsHistory"
+    tools:context="com.spacebartechnologies.connormyers.passenger.PointsHistoryActivity"
     tools:showIn="@layout/activity_points_history">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Points History"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:id="@+id/points_history_recycler_view">
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

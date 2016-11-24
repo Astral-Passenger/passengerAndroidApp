@@ -1,34 +1,55 @@
 package com.spacebartechnologies.connormyers.passenger;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ImageButton;
+/**
+ * Created by tommyduong23 on 11/23/16.
+ */
 
-public class PointsHistory extends AppCompatActivity {
+public class PointsHistory {
+    private String mCreatedAt;
+    private double mDistanceTraveled;
+    private double mPointsGenerated;
 
-    private ImageButton mBackNavButton;
+    public PointsHistory() {
+        mCreatedAt = "";
+        mDistanceTraveled = 0;
+        mPointsGenerated = 0;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_points_history);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public PointsHistory(String date, double distanceTraveled, double pointsGenerated) {
+        mCreatedAt = date;
+        mDistanceTraveled = distanceTraveled;
+        mPointsGenerated = pointsGenerated;
+    }
 
-        mBackNavButton = (ImageButton) findViewById(R.id.back_button_points_history);
-        mBackNavButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PointsHistory.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    public String getCreatedAt() {
+        return mCreatedAt;
+    }
+    public String getDate() {
+        String date;
+        String[] fullDate;
 
+        fullDate = mCreatedAt.split(" ");
+        date = fullDate[0];
+
+        return date;
+    }
+
+    public String getTime() {
+        String time;
+        String[] fullDate;
+
+        fullDate = mCreatedAt.split(" ");
+        time = fullDate[1];
+
+        return time;
+    }
+
+    public double getDistanceTravel() {
+        return mDistanceTraveled;
+    }
+
+    public double getPoints() {
+        return mPointsGenerated;
     }
 
 }
