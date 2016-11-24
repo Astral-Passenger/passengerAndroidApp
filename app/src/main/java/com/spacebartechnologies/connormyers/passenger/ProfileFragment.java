@@ -81,7 +81,7 @@ public class ProfileFragment extends Fragment {
         rewardsReceivedLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, RewardsHistory.class);
+                Intent intent = new Intent(context, RewardsHistoryActivity.class);
                 startActivity(intent);
             }
         });

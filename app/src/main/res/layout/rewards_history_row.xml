@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp">
+
+    <LinearLayout
+        android:id="@+id/discount_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/discount"
+            android:paddingBottom="10sp"
+            android:paddingTop="10sp"
+            android:textSize="15sp"
+            android:textColor="@color/darkGrey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/company_name"
+            android:paddingBottom="10sp"
+            android:textColor="@color/lightGrey"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/point_cost"
+            android:paddingBottom="6sp"
+            android:paddingTop="8sp"
+            android:textColor="@color/colorAccent"
+            android:textSize="21sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10sp"
+            android:text="POINTS"
+            android:textSize="12sp"
+            android:textColor="@color/darkGrey"/>
+    </LinearLayout>
+
+</RelativeLayout>

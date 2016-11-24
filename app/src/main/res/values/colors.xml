@@ -6,6 +6,8 @@
         <color name="windowBackground">#FFFFFF</color>
         <color name="navigationBarColor">#000000</color>
         <color name="colorAccent">#095FC2</color>
+        <color name="darkGrey">#4A4A4A</color>
+        <color name="lightGrey">#AAAAAA</color>
         <color name="facebook">#3b5998</color>
         <color name="facebookDark">#273B65</color>
 </resources>
