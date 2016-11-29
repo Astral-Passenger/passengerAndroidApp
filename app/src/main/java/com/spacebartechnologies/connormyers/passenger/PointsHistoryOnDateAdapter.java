@@ -30,7 +30,7 @@ public class PointsHistoryOnDateAdapter extends RecyclerView.Adapter<PointsHisto
         PointsHistory pointsHistory = mPointsHistory.get(position);
         holder.distance_traveled.setText(String.valueOf(pointsHistory.getDistanceTravel()));
         holder.time.setText(pointsHistory.getTime());
-        holder.pointsGenerated.setText(String.valueOf(pointsHistory.getPoints()));
+        holder.pointsGenerated.setText("+" + String.valueOf(pointsHistory.getPoints()));
     }
 
     @Override

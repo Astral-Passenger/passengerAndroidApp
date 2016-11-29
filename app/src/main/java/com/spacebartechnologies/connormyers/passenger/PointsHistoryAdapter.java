@@ -1,6 +1,8 @@
 package com.spacebartechnologies.connormyers.passenger;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,6 +42,10 @@ public class PointsHistoryAdapter extends RecyclerView.Adapter<PointsHistoryAdap
         mPointsHistoryOnDateAdapter = new PointsHistoryOnDateAdapter(pointsHistoryGroup.getPointsHistory());
         holder.pointHistory.setAdapter(mPointsHistoryOnDateAdapter);
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(holder.pointHistory.getContext(), LinearLayoutManager.VERTICAL);
+        holder.pointHistory.addItemDecoration(dividerItemDecoration);
+
+
     }
 
     @Override
@@ -51,12 +57,14 @@ public class PointsHistoryAdapter extends RecyclerView.Adapter<PointsHistoryAdap
 
         TextView date;
         RecyclerView pointHistory;
+        CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             date = (TextView) itemView.findViewById(R.id.date);
             pointHistory = (RecyclerView) itemView.findViewById(R.id.points_history_on_date_recycler_view);
+            cardView = (CardView) itemView.findViewById(R.id.points_history_on_date_card_view);
         }
     }
 }

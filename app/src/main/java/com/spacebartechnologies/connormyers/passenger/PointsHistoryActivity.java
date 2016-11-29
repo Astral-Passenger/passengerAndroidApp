@@ -30,7 +30,7 @@ public class PointsHistoryActivity extends AppCompatActivity {
     private RecyclerView mPointsHistoryRecyclerView;
     private FirebaseUser currentUser;
     private DatabaseReference mDatabase;
-    private List<PointsHistoryGroup> mPointHistoryGroup;
+    private List<PointsHistoryGroup> mPointHistoryGroupList;
     private List<PointsHistory> mPointHistory;
     private Context mContext;
 
@@ -42,11 +42,11 @@ public class PointsHistoryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mContext = this;
         mPointHistory = new ArrayList<PointsHistory>();
-        mPointHistoryGroup = new ArrayList<PointsHistoryGroup>();
+        mPointHistoryGroupList = new ArrayList<PointsHistoryGroup>();
         mPointsHistoryRecyclerView = (RecyclerView) findViewById(R.id.points_history_recycler_view);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         mPointsHistoryRecyclerView.setLayoutManager(layoutManager);
-        mPointsHistoryAdapter = new PointsHistoryAdapter(mPointHistoryGroup, this);
+        mPointsHistoryAdapter = new PointsHistoryAdapter(mPointHistoryGroupList, this);
         mPointsHistoryRecyclerView.setAdapter(mPointsHistoryAdapter);
 
 
@@ -68,16 +68,18 @@ public class PointsHistoryActivity extends AppCompatActivity {
                 String createdAt = "";
                 String date = "";
                 double distanceTraveled;
-                double pointsGenerated;
+                double points;
+                int pointsGenerated;
                 List<PointsHistory> tempPointsHistory = new ArrayList<PointsHistory>();
                 PointsHistoryGroup pointsHistoryGroup;
-
-                int i = 0;
+                List<PointsHistoryGroup> tempPointsHistoryGroupList = new ArrayList<PointsHistoryGroup>();
 
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     createdAt = (String) messageSnapshot.child("createdAt").getValue();
                     distanceTraveled = (double) messageSnapshot.child("distanceTraveled").getValue();
-                    pointsGenerated = (double) messageSnapshot.child("pointsGenerated").getValue();
+                    points = (double) messageSnapshot.child("pointsGenerated").getValue();
+
+                    pointsGenerated = (int) points;
 
                     mPointHistory.add(new PointsHistory(createdAt, distanceTraveled, pointsGenerated));
                 }
@@ -85,14 +87,11 @@ public class PointsHistoryActivity extends AppCompatActivity {
 
                 for (PointsHistory ph : mPointHistory) {
                     if (date.equals(ph.getDate())) {
-                        Log.d("Date: ", date);
                         tempPointsHistory.add(ph);
                     }
                     else {
                         pointsHistoryGroup = new PointsHistoryGroup(date, tempPointsHistory);
-                        Log.d("Date2", pointsHistoryGroup.getDate());
-                        Log.d("list", Integer.toString(tempPointsHistory.size()));
-                        mPointHistoryGroup.add(pointsHistoryGroup);
+                        mPointHistoryGroupList.add(pointsHistoryGroup);
                         date = ph.getDate();
                         tempPointsHistory = new ArrayList<PointsHistory>();
                         tempPointsHistory.add(ph);
@@ -102,9 +101,14 @@ public class PointsHistoryActivity extends AppCompatActivity {
 
                 }
                 pointsHistoryGroup = new PointsHistoryGroup(date, tempPointsHistory);
-                mPointHistoryGroup.add(pointsHistoryGroup);
-                Log.d("length", Integer.toString(mPointHistoryGroup.size()));
-                mPointsHistoryAdapter = new PointsHistoryAdapter(mPointHistoryGroup, mContext);
+                mPointHistoryGroupList.add(pointsHistoryGroup);
+
+                for (int i = mPointHistoryGroupList.size() - 1; i >= 0; i--) {
+                    tempPointsHistoryGroupList.add(mPointHistoryGroupList.get(i));
+
+                }
+                mPointHistoryGroupList = tempPointsHistoryGroupList;
+                mPointsHistoryAdapter = new PointsHistoryAdapter(mPointHistoryGroupList, mContext);
                 mPointsHistoryRecyclerView.setAdapter(mPointsHistoryAdapter);
 
             }
