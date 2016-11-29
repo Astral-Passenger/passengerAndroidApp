@@ -38,6 +38,8 @@ public class RewardsHistoryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mRewardsHistory = new ArrayList<RewardsHistory>();
+
+        /*RecyclerView Setup */
         mRewardsHistoryRecyclerView = (RecyclerView) findViewById(R.id.rewards_history_recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRewardsHistoryRecyclerView.setLayoutManager(layoutManager);
@@ -45,6 +47,8 @@ public class RewardsHistoryActivity extends AppCompatActivity {
         mRewardsHistoryRecyclerView.addItemDecoration(dividerItemDecoration);
         mRewardsHistoryAdapter = new RewardsHistoryAdapter(new ArrayList<RewardsHistory>());
         mRewardsHistoryRecyclerView.setAdapter(mRewardsHistoryAdapter);
+
+
         mBackNavButton = (ImageButton) findViewById(R.id.back_button_rewards_history);
         mBackNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +68,8 @@ public class RewardsHistoryActivity extends AppCompatActivity {
                 long pointCost;
                 String rewardItem;
                 String rewardText;
+
+                /* Gets Rewards History Data*/
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     companyName = (String) messageSnapshot.child("companyName").getValue();
                     pointCost = (long) messageSnapshot.child("pointCost").getValue();

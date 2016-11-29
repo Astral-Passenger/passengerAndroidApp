@@ -15,17 +15,23 @@ public class PointsHistory {
     private String mCreatedAt;
     private double mDistanceTraveled;
     private int mPointsGenerated;
+    private String mDate;
+    private String mTime;
 
     public PointsHistory() {
         mCreatedAt = "";
         mDistanceTraveled = 0;
         mPointsGenerated = 0;
+        mDate = "";
+        mTime = "";
     }
 
     public PointsHistory(String date, double distanceTraveled, int pointsGenerated) {
         mCreatedAt = date;
         mDistanceTraveled = distanceTraveled;
         mPointsGenerated = pointsGenerated;
+        mDate = formatDate();
+        mTime = formatTime();
     }
 
     public String getCreatedAt() {
@@ -33,61 +39,11 @@ public class PointsHistory {
     }
 
     public String getDate() {
-        String date;
-        String[] fullDate;
-        String[] temp;
-        String year;
-        String month;
-        String day;
-        int monthNum;
-
-        fullDate = mCreatedAt.split(" ");
-
-        /*Date in number format*/
-        date = fullDate[0];
-
-        /*Split date into year month day */
-        temp = date.split("-");
-        year = temp[0];
-        month = temp[1];
-        day = temp[2];
-
-        month = getMonth(Integer.valueOf(month));
-        date = month + " " + day + ", " + year;
-
-        return date;
+        return mDate;
     }
 
     public String getTime() {
-        String time;
-        String[] fullDate;
-        String hour;
-        String min;
-        String meridiem = "AM";
-        int hourNum;
-        int minNum;
-        String temp[];
-
-        fullDate = mCreatedAt.split(" ");
-
-        /* Time in 24 hr format */
-        time = fullDate[1];
-
-        temp = time.split(":");
-        hour = temp[0];
-        min = temp[1];
-
-        hourNum = Integer.valueOf(hour);
-        minNum = Integer.valueOf(min);
-
-        if (hourNum > 12) {
-            hourNum -= 12;
-            meridiem = "PM";
-        }
-        hour = String.valueOf(hourNum);
-        time = hour + ":" + min + " " + meridiem;
-        Log.d("Time", time);
-        return time;
+        return mTime;
     }
 
     public double getDistanceTravel() {
@@ -142,6 +98,63 @@ public class PointsHistory {
                 monthString = "Invalid month"; break;
         }
         return monthString;
+    }
+
+    private String formatDate() {
+        String date;
+        String[] fullDate;
+        String[] temp;
+        String year;
+        String month;
+        String day;
+
+        fullDate = mCreatedAt.split(" ");
+
+        /*Date in number format*/
+        date = fullDate[0];
+
+        /*Split date into year month day */
+        temp = date.split("-");
+        year = temp[0];
+        month = temp[1];
+        day = temp[2];
+
+        month = getMonth(Integer.valueOf(month));
+        date = month + " " + day + ", " + year;
+
+        return date;
+    }
+
+    private String formatTime() {
+        String time;
+        String[] fullDate;
+        String hour;
+        String min;
+        String meridiem = "AM";
+        int hourNum;
+        int minNum;
+        String temp[];
+
+        fullDate = mCreatedAt.split(" ");
+
+        /* Time in 24 hr format */
+        time = fullDate[1];
+
+        temp = time.split(":");
+        hour = temp[0];
+        min = temp[1];
+
+        hourNum = Integer.valueOf(hour);
+        minNum = Integer.valueOf(min);
+
+        if (hourNum > 12) {
+            hourNum -= 12;
+            meridiem = "PM";
+        }
+        hour = String.valueOf(hourNum);
+        time = hour + ":" + min + " " + meridiem;
+        Log.d("Time", time);
+        return time;
     }
 
 }
