@@ -7,15 +7,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.util.LruCache;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,15 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import org.w3c.dom.Comment;
-
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     private LruCache<String, Bitmap> mMemoryCache;
     private FirebaseUser currentUser;
@@ -99,7 +91,7 @@ public class SplashScreen extends AppCompatActivity {
                                 editor.putLong("distanceTraveled",distanceTraveledInt);
                                 editor.putLong("timeSpentDriving", timeSpentDriving);
                                 editor.commit();
-                                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
