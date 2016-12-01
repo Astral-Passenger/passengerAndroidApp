@@ -11,6 +11,8 @@ import android.support.v4.util.LruCache;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     private LruCache<String, Bitmap> mMemoryCache;
@@ -35,10 +38,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        final Handler splashScreenHandler = new Handler();
 
+        final Handler splashScreenHandler = new Handler();
         splashScreenHandler.postDelayed(new Runnable() {
             public void run() {
+
                 currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 if (currentUser != null) {
                     // user authenticated
