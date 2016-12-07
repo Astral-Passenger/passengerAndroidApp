@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.spacebartechnologies.connormyers.passenger.RewardsActivity">
+    tools:context="com.spacebartechnologies.connormyers.passenger.MerchantsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 <ImageButton
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:id="@+id/back_button_rewards"
+                    android:id="@+id/back_button_merchants"
                     android:background="@mipmap/back_navigation"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="16dp"
@@ -55,7 +55,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_rewards" />
-
+    <include layout="@layout/content_merchants" />
 
 </android.support.design.widget.CoordinatorLayout>

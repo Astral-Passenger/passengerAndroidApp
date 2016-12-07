@@ -12,4 +12,7 @@
         <color name="facebookDark">#273B65</color>
         <color name="grey">#e3e3e3</color>
         <color name="purple">#9013FE</color>
+        <color name="transBlack">#80000000</color>
+        <color name="offWhite">#eeeeee</color>
+        <color name="white">#ffffff</color>
 </resources>
