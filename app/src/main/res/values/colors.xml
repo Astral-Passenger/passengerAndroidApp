@@ -15,4 +15,5 @@
         <color name="transBlack">#80000000</color>
         <color name="offWhite">#eeeeee</color>
         <color name="white">#ffffff</color>
+        <color name="red">#b04648</color>
 </resources>

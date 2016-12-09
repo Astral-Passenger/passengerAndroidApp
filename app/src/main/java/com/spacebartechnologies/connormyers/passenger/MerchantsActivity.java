@@ -132,8 +132,8 @@ public class MerchantsActivity extends AppCompatActivity {
                         rewardsName = (String) r.get("rewardsName");
                         if (merchantType.equals("onlineMerchants")) {
                             rewardCoupon = (String) r.get("couponCode");
-                            onlineReward = new OnlineReward(rewardCompanyName, rewardCoupon, imgLoc, rewardPointCost, rewardAmountSaved, rewardDescription, rewardPrice, rewardsName);
-                            rewardList.add(onlineReward);
+                            reward = new Reward(rewardCompanyName, rewardCoupon, rewardImgLoc, rewardPointCost, rewardAmountSaved, rewardDescription, rewardPrice, rewardsName);
+                            rewardList.add(reward);
                         }
                         else {
                             reward = new Reward(rewardCompanyName, rewardImgLoc, rewardPointCost, rewardAmountSaved, rewardDescription, rewardPrice, rewardsName);

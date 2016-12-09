@@ -1,6 +1,7 @@
 package com.spacebartechnologies.connormyers.passenger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,7 +40,7 @@ public class OnlineMerchantAdapter extends RecyclerView.Adapter<OnlineMerchantAd
 
     @Override
     public void onBindViewHolder(OnlineMerchantAdapter.ViewHolder holder, int position) {
-        OnlineMerchant onlineMerchant = mMerchantList.get(position);
+        final OnlineMerchant onlineMerchant = mMerchantList.get(position);
         Log.d("Imgloc", onlineMerchant.getImgLoc());
         storageRef = storage.getReferenceFromUrl(onlineMerchant.getImgLoc());
         Glide.with(context)
@@ -47,6 +48,17 @@ public class OnlineMerchantAdapter extends RecyclerView.Adapter<OnlineMerchantAd
                 .load(storageRef)
                 .into(holder.onlineImg);
         holder.companyName.setText(onlineMerchant.getName());
+
+        holder.onlineImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MerchantRewardsActivity.class);
+                intent.putParcelableArrayListExtra("rewardList", onlineMerchant.getRewardList());
+                intent.putExtra("merchantImg", onlineMerchant.getImgLoc());
+                intent.putExtra("type", "onlineMerchants");
+                context.startActivity(intent);
+            }
+        });
 
     }
 

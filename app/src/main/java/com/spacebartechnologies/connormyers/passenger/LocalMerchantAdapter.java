@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -44,16 +45,14 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
                 .using(new FirebaseImageLoader())
                 .load(storageRef)
                 .into(holder.localImg);
-      //  holder.localImg.setImageBitmap(decodedByte);
-
         holder.companyName.setText(localMerchant.getName());
         holder.streets.setText(localMerchant.getStreets());
-
         holder.localImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MerchantRewardsActivity.class);
-                intent.putParcelableArrayListExtra("rewards", localMerchant.getRewardList());
+                intent.putParcelableArrayListExtra("rewardList", localMerchant.getRewardList());
+                intent.putExtra("merchantImg", localMerchant.getImgLoc());
                 intent.putExtra("type", "localMerchants");
                 context.startActivity(intent);
             }
