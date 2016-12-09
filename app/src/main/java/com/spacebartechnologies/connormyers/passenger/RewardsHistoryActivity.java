@@ -69,7 +69,7 @@ public class RewardsHistoryActivity extends AppCompatActivity {
                 String rewardItem;
                 String rewardText;
 
-                /* Gets Rewards History Data*/
+                /* Gets RewardsActivity History Data*/
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     companyName = (String) messageSnapshot.child("companyName").getValue();
                     pointCost = (long) messageSnapshot.child("pointCost").getValue();

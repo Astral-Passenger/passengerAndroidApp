@@ -71,8 +71,8 @@ public class HelpAndSupport extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HelpAndSupport.this, HelpExpanded.class);
-                intent.putExtra("questionType", "Rewards");
-                intent.putExtra("questionTypeQuery", "Rewards");
+                intent.putExtra("questionType", "RewardsActivity");
+                intent.putExtra("questionTypeQuery", "RewardsActivity");
                 startActivity(intent);
             }
         });

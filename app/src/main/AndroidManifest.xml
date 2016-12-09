@@ -21,10 +21,25 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
         <activity
-            android:name=".Rewards"
+            android:name=".RewardsActivity"
             android:label="@string/title_activity_rewards"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".MerchantsActivity"
+            android:label="RewardsList"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".MerchantRewardsActivity"
+            android:label="MerchantReward"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"/>
+        <activity
+            android:name=".RedeemActivity"
+            android:label="Redeem"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"/>
         <activity
             android:name=".RewardsHistoryActivity"
             android:label="@string/title_activity_rewards_history"

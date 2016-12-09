@@ -69,8 +69,6 @@ public class PointsHistoryActivity extends AppCompatActivity {
                 double points;
                 int pointsGenerated;
 
-
-
                 /* Get Points History Data */
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     createdAt = (String) messageSnapshot.child("createdAt").getValue();

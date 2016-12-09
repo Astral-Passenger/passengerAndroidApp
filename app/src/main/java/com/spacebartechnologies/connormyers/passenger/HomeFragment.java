@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         mRewardsButtonLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent rewardsIntent = new Intent(getActivity(), Rewards.class);
+                Intent rewardsIntent = new Intent(getActivity(), RewardsActivity.class);
                 startActivity(rewardsIntent);
             }
         });
