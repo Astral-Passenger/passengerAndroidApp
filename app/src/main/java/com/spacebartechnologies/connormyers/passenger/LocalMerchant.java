@@ -1,5 +1,7 @@
 package com.spacebartechnologies.connormyers.passenger;
 
+import android.location.Location;
+
 import java.util.ArrayList;
 
 /**
@@ -12,6 +14,8 @@ public class LocalMerchant extends Merchant implements Comparable<LocalMerchant>
     private String mStreets;
     private double mLatitude;
     private double mLongitude;
+    private Location mLocation;
+    private double mDistance;
 
     public LocalMerchant(String city, String description, String name, String streets, String email, String imgLoc, double latitude, double longtitude, ArrayList<Reward> rewardList) {
 
@@ -20,6 +24,9 @@ public class LocalMerchant extends Merchant implements Comparable<LocalMerchant>
         mStreets = streets;
         mLatitude = latitude;
         mLongitude = longtitude;
+        mLocation = new Location("");
+        mLocation.setLatitude(mLatitude);
+        mLocation.setLongitude(mLongitude);
 
     }
 
@@ -36,9 +43,30 @@ public class LocalMerchant extends Merchant implements Comparable<LocalMerchant>
     public double getLongtitude() {
         return mLongitude;
     }
+    public Location getLocation() {return mLocation; }
+
+    public void setDistance(Location currentLocation) {
+        mDistance = currentLocation.distanceTo(mLocation);
+        mDistance = mDistance * 0.000621371192;
+    }
+    public double getDistance() {
+        return mDistance;
+    }
+
+
 
     @Override
     public int compareTo(LocalMerchant localMerchant) {
-        return 0;
+        double distance = localMerchant.getDistance();
+
+        if (mDistance > distance) {
+            return 1;
+        }
+        else if (mDistance < distance) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
     }
 }

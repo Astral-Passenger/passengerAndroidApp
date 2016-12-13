@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by tommyduong23 on 12/4/16.
  */
 
-public class Reward implements Parcelable {
+public class Reward implements Parcelable, Comparable<Reward> {
 
     private String mCompanyName;
     private String mImgLoc;
@@ -121,4 +121,18 @@ public class Reward implements Parcelable {
             return new Reward[size];
         }
     };
+
+    @Override
+    public int compareTo(Reward reward) {
+        long pointCost = reward.getPointCost();
+        if (mPointCost > pointCost) {
+            return 1;
+        }
+        else if (mPointCost < pointCost) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
 }

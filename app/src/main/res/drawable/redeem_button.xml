@@ -10,8 +10,8 @@
     <item android:state_pressed="false">
         <shape android:shape="rectangle"  >
             <corners android:radius="0dip" />
-            <stroke android:width="0dip" android:color="@color/offWhite" />
-            <solid android:color="@color/offWhite" />
+            <stroke android:width="0dip" android:color="@color/white" />
+            <solid android:color="@color/white" />
         </shape>n
     </item>
 </selector>

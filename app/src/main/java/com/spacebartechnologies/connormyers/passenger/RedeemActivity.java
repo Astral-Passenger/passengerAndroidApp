@@ -81,6 +81,7 @@ public class RedeemActivity extends AppCompatActivity {
                 intent.putExtra("type", merchantType);
                 intent.putParcelableArrayListExtra("rewardList", mRewardList);
                 intent.putExtra("merchantImg", merchantImg);
+                finish();
                 startActivity(intent);
             }
         });

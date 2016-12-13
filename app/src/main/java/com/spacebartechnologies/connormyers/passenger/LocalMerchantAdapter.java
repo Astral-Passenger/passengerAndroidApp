@@ -15,6 +15,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -40,6 +41,7 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
     @Override
     public void onBindViewHolder(LocalMerchantAdapter.ViewHolder holder, int position) {
         final LocalMerchant localMerchant = mMerchantList.get(position);
+        DecimalFormat df = new DecimalFormat("0.0");
         storageRef = storage.getReferenceFromUrl(localMerchant.getImgLoc());
         Glide.with(context)
                 .using(new FirebaseImageLoader())
@@ -47,6 +49,7 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
                 .into(holder.localImg);
         holder.companyName.setText(localMerchant.getName());
         holder.streets.setText(localMerchant.getStreets());
+        holder.distance.setText(df.format(localMerchant.getDistance()));
         holder.localImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +60,8 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
                 context.startActivity(intent);
             }
         });
+        holder.distance.bringToFront();
+        holder.miles.bringToFront();
     }
 
     @Override
@@ -69,6 +74,7 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
         private TextView companyName;
         private TextView streets;
         private TextView distance;
+        private TextView miles;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +83,7 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
             companyName = (TextView) itemView.findViewById(R.id.company_name);
             streets = (TextView) itemView.findViewById(R.id.streets);
             distance = (TextView) itemView.findViewById(R.id.distance);
+            miles = (TextView) itemView.findViewById(R.id.miles);
         }
     }
 }

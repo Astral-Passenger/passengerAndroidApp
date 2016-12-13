@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_redeem"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@color/grey">
+    android:background="@color/background">
 
     <RelativeLayout
         android:layout_width="match_parent"

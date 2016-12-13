@@ -3,6 +3,7 @@
     package="com.spacebartechnologies.connormyers.passenger">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".PassengerApplication"
@@ -90,7 +91,7 @@
                 android:value="com.spacebartechnologies.connormyers.passenger.SignIn" />
         </activity>
         <activity
-            android:name=".ProfileSettings"
+            android:name=".ProfileSettingsActivity"
             android:label="@string/title_activity_profile_settings"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />

@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -65,7 +64,7 @@ public class MoreFragment extends Fragment {
         editProfileInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProfileSettings.class);
+                Intent intent = new Intent(getActivity(), ProfileSettingsActivity.class);
                 startActivity(intent);
             }
         });

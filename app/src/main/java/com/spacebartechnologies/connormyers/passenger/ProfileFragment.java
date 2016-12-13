@@ -94,6 +94,15 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProfileSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return v;
     }
 

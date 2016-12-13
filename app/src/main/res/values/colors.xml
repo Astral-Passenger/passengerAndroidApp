@@ -7,13 +7,14 @@
         <color name="navigationBarColor">#000000</color>
         <color name="colorAccent">#095FC2</color>
         <color name="darkGrey">#4A4A4A</color>
-        <color name="lightGrey">#AAAAAA</color>
+        <color name="grey">#AAAAAA</color>
         <color name="facebook">#3b5998</color>
         <color name="facebookDark">#273B65</color>
-        <color name="grey">#e3e3e3</color>
+        <color name="lightGrey">#e3e3e3</color>
         <color name="purple">#9013FE</color>
         <color name="transBlack">#80000000</color>
         <color name="offWhite">#eeeeee</color>
         <color name="white">#ffffff</color>
         <color name="red">#b04648</color>
+        <color name="background">#f2f4f6</color>
 </resources>

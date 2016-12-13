@@ -21,6 +21,7 @@ public class RewardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rewards);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final RewardsActivity rewardsActivity = this;
 
         mOnlineImageView = (ImageView) findViewById(R.id.online_img);
         mLocalImageView = (ImageView) findViewById(R.id.local_img);
@@ -30,6 +31,7 @@ public class RewardsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RewardsActivity.this, MainActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
@@ -39,6 +41,7 @@ public class RewardsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RewardsActivity.this, MerchantsActivity.class);
                 intent.putExtra("type", "onlineMerchants");
+
                 startActivity(intent);
 
             }

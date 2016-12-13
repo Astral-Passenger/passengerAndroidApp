@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by tommyduong23 on 12/6/16.
@@ -44,6 +45,7 @@ public class MerchantRewardsActivity extends AppCompatActivity {
         mMerchantRewardsRecyclerView.setLayoutManager(layoutManager);
         mMerchantRewardsRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 7, false));
 
+        Collections.sort(mRewardList);
         mMerchantRewardsAdapter = new MerchantRewardsAdapter(mRewardList, merchantImg, merchantType);
         mMerchantRewardsRecyclerView.setAdapter(mMerchantRewardsAdapter);
 
@@ -54,6 +56,7 @@ public class MerchantRewardsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MerchantRewardsActivity.this, MerchantsActivity.class);
                 intent.putExtra("type", merchantType);
+                finish();
                 startActivity(intent);
             }
         });
