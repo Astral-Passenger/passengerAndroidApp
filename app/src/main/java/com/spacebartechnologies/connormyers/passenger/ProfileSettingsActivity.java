@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -68,7 +69,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private Bitmap newImgBitMap;
     private AlertDialog saveAlertDialog;
-    private ProgressBar saveProgessBar;
     private ImageView saveCheckmark;
     SharedPreferences sharedPref;
 
@@ -150,8 +150,8 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         mSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveUserInfo();
                 showAlertDialog();
+                saveUserInfo();
             }
         });
 
@@ -180,7 +180,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     private void saveUserInfo() {
 
-        //FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid()).child("name").setValue(mName);
+        FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid()).child("name").setValue(mName);
 
         FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid()).child("imageLocation").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -206,11 +206,10 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                         byte[] byteArray = byteArrayOutputStream .toByteArray();
                         String imageLocation = Base64.encodeToString(byteArray, Base64.DEFAULT);
                         SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("name", mName);
                         editor.putString("imageLocation", imageLocation);
                         editor.commit();
-                        saveAlertDialog.setCancelable(true);
-                        saveProgessBar.setVisibility(View.GONE);
-                        saveCheckmark.setVisibility(View.VISIBLE);
+
 
 
                     }
@@ -227,12 +226,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     private void showAlertDialog() {
         LayoutInflater li = LayoutInflater.from(this);
         View dialogView = li.inflate(R.layout.profile_setting_dialog, null);
-        saveProgessBar = (ProgressBar) dialogView.findViewById(R.id.save_progress_bar);
-        saveCheckmark = (ImageView) dialogView.findViewById(R.id.checkmark);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(dialogView);
-        alertDialogBuilder.setCancelable(true);
         saveAlertDialog = alertDialogBuilder.create();
+        saveAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         saveAlertDialog.show();
+        saveAlertDialog.getWindow().setLayout(800, -2);
     }
 }

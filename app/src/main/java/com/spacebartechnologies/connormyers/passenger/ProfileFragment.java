@@ -30,10 +30,15 @@ public class ProfileFragment extends Fragment {
     private Integer days, hoursFloored, minutes;
     private Double hoursFull;
     private RelativeLayout rewardsReceivedLayout, milesDrivenLayout;
+    Context context;
 
 
     public ProfileFragment() {
         // Required empty public constructor
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
 
@@ -54,29 +59,29 @@ public class ProfileFragment extends Fragment {
         rewardsReceivedLayout = (RelativeLayout) v.findViewById(R.id.rewardsReceivedLayoutProfile);
         milesDrivenLayout = (RelativeLayout) v.findViewById(R.id.milesDrivenLayoutProfile);
 
-        final Context context = getActivity();
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        String name = sharedPref.getString("name","Temp");
-        int currentPoints = sharedPref.getInt("currentPoints", 0);
-        int totalPoints = sharedPref.getInt("totalPoints", 0);
-        long rewardsReceived = sharedPref.getLong("rewardsReceived",0);
-        long timeSpentDriving = sharedPref.getLong("timeSpentDriving",0);
-        calculateDrivingString(timeSpentDriving);
-        long distanceTraveled = sharedPref.getLong("distanceTraveled",0);
-        String base64Image = sharedPref.getString("imageLocation", "");
-        Log.d("TAG: This is the image", base64Image);
-        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-        profileImageView.setImageBitmap(decodedByte);
-        usersNameProfile.setText(name);
-        timeSpentDrivingProfile.setText(calculateDrivingString(timeSpentDriving));
-        currentPointsProfile.setText(String.valueOf(currentPoints) + " current points");
-        totalPointsProfile.setText(String.valueOf(totalPoints) + " total points");
-        milesDrivenProfile.setText(String.valueOf(distanceTraveled));
-
-        rewardsReceivedProfile.setText(String.valueOf(rewardsReceived));
+         context = getActivity();
+//        SharedPreferences sharedPref = context.getSharedPreferences(
+//                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+//        String name = sharedPref.getString("name","Temp");
+//        int currentPoints = sharedPref.getInt("currentPoints", 0);
+//        int totalPoints = sharedPref.getInt("totalPoints", 0);
+//        long rewardsReceived = sharedPref.getLong("rewardsReceived",0);
+//        long timeSpentDriving = sharedPref.getLong("timeSpentDriving",0);
+//        calculateDrivingString(timeSpentDriving);
+//        long distanceTraveled = sharedPref.getLong("distanceTraveled",0);
+//        String base64Image = sharedPref.getString("imageLocation", "");
+//        Log.d("TAG: This is the image", base64Image);
+//        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+//        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+//
+//        profileImageView.setImageBitmap(decodedByte);
+//        usersNameProfile.setText(name);
+//        timeSpentDrivingProfile.setText(calculateDrivingString(timeSpentDriving));
+//        currentPointsProfile.setText(String.valueOf(currentPoints) + " current points");
+//        totalPointsProfile.setText(String.valueOf(totalPoints) + " total points");
+//        milesDrivenProfile.setText(String.valueOf(distanceTraveled));
+//
+//        rewardsReceivedProfile.setText(String.valueOf(rewardsReceived));
 
         rewardsReceivedLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,4 +136,35 @@ public class ProfileFragment extends Fragment {
         return finalString;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadUserData();
+
+    }
+
+    private void loadUserData() {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String name = sharedPref.getString("name","Temp");
+        int currentPoints = sharedPref.getInt("currentPoints", 0);
+        int totalPoints = sharedPref.getInt("totalPoints", 0);
+        long rewardsReceived = sharedPref.getLong("rewardsReceived",0);
+        long timeSpentDriving = sharedPref.getLong("timeSpentDriving",0);
+        calculateDrivingString(timeSpentDriving);
+        long distanceTraveled = sharedPref.getLong("distanceTraveled",0);
+        String base64Image = sharedPref.getString("imageLocation", "");
+        Log.d("TAG: This is the image", base64Image);
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+        profileImageView.setImageBitmap(decodedByte);
+        usersNameProfile.setText(name);
+        timeSpentDrivingProfile.setText(calculateDrivingString(timeSpentDriving));
+        currentPointsProfile.setText(String.valueOf(currentPoints) + " current points");
+        totalPointsProfile.setText(String.valueOf(totalPoints) + " total points");
+        milesDrivenProfile.setText(String.valueOf(distanceTraveled));
+
+        rewardsReceivedProfile.setText(String.valueOf(rewardsReceived));
+    }
 }

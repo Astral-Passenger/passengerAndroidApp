@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -40,6 +41,8 @@ public class RedeemActivity extends AppCompatActivity {
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageRef;
     private OnlineReward onlineReward;
+    private FirebaseUser currentUser;
+
 
 
     @Override
@@ -48,6 +51,19 @@ public class RedeemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_redeem);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mBackNavButton = (ImageButton) findViewById(R.id.back_button_redeem);
+        mBackNavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RedeemActivity.this, MerchantRewardsActivity.class);
+                intent.putExtra("type", merchantType);
+                intent.putParcelableArrayListExtra("rewardList", mRewardList);
+                intent.putExtra("merchantImg", merchantImg);
+                finish();
+                startActivity(intent);
+            }
+        });
 
         mMerchantImg = (ImageView) findViewById(R.id.merchant_img);
         mRewardImg = (ImageView) findViewById(R.id.reward_img);
@@ -73,19 +89,12 @@ public class RedeemActivity extends AppCompatActivity {
         mRewardDescription.setText(mReward.getDescription());
         mPointCost.setText(Long.toString(mReward.getPointCost()));
 
-        mBackNavButton = (ImageButton) findViewById(R.id.back_button_redeem);
-        mBackNavButton.setOnClickListener(new View.OnClickListener() {
+        mRedeemButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RedeemActivity.this, MerchantRewardsActivity.class);
-                intent.putExtra("type", merchantType);
-                intent.putParcelableArrayListExtra("rewardList", mRewardList);
-                intent.putExtra("merchantImg", merchantImg);
-                finish();
-                startActivity(intent);
+            public void onClick(View view) {
+            
             }
         });
-
     }
 
 }

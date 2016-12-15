@@ -73,7 +73,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:background="@drawable/redeem_button"
             android:text="SAVE"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/green"/>
     </LinearLayout>
 
 </RelativeLayout>
