@@ -68,7 +68,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     private StorageReference storageRef;
     private FirebaseUser currentUser;
     private Bitmap newImgBitMap;
-    private AlertDialog saveAlertDialog;
     private ImageView saveCheckmark;
     SharedPreferences sharedPref;
 
@@ -228,9 +227,9 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         View dialogView = li.inflate(R.layout.profile_setting_dialog, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(dialogView);
-        saveAlertDialog = alertDialogBuilder.create();
-        saveAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        saveAlertDialog.show();
-        saveAlertDialog.getWindow().setLayout(800, -2);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        alertDialog.show();
+        alertDialog.getWindow().setLayout(800, -2);
     }
 }

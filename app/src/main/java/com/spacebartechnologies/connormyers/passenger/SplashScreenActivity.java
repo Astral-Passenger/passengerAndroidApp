@@ -69,7 +69,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Get user information
                         final String name = (String) dataSnapshot.child("name").getValue();
-                        final Double currentPoints = (Double) dataSnapshot.child("currentPoints").getValue();
+                        final Double currentPoints = ((Number)dataSnapshot.child("currentPoints").getValue()).doubleValue();
                         final int currentPointsInt = (int) Math.floor(currentPoints);
                         final Double totalPoints = (Double) dataSnapshot.child("totalPoints").getValue();
                         final int totalPointsInt = (int) Math.floor(totalPoints);
