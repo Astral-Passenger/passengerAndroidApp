@@ -77,6 +77,13 @@ public class HomeFragment extends Fragment {
         return layout;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadUserData();
+
+    }
+
     private void loadUserData() {
         Context context = getActivity();
         SharedPreferences sharedPref = context.getSharedPreferences(

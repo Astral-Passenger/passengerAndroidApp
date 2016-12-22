@@ -81,7 +81,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                         StorageReference storageRef = storage.getReferenceFromUrl(imageLocation);
 
-                        final long ONE_MEGABYTE = 3000 * 3000;
+                        final long ONE_MEGABYTE = 1024 *1024;
                         storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                             @Override
                             public void onSuccess(byte[] bytes) {
