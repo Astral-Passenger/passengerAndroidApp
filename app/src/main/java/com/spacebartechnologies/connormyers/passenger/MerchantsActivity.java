@@ -132,9 +132,20 @@ public class MerchantsActivity extends AppCompatActivity implements GoogleApiCli
             String rewardCoupon;
             StorageReference storageRef;
 
+            ArrayList<HashMap> transactionMapList;
+            ArrayList<MonthlyTransaction> transactionList;
+            MonthlyTransaction monthlyTransaction;
+            String dateRecorded;
+            String rewardItem;
+            String userEmail;
+            String key;
+
+
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                    Log.d("key", messageSnapshot.getKey());
                     description = (String) messageSnapshot.child("companyDescription").getValue();
                     companyName = (String) messageSnapshot.child("companyName").getValue();
                     email = (String) messageSnapshot.child("email").getValue();
@@ -145,6 +156,7 @@ public class MerchantsActivity extends AppCompatActivity implements GoogleApiCli
                         latitude = (double) messageSnapshot.child("latitude").getValue();
                         longitude = (double) messageSnapshot.child("longitude").getValue();
                     }
+                    key = messageSnapshot.getKey();
                     rewardList = new ArrayList<Reward>();
 
                     rewardMapList = (ArrayList) messageSnapshot.child("rewards").getValue();
@@ -168,14 +180,31 @@ public class MerchantsActivity extends AppCompatActivity implements GoogleApiCli
 
                     }
 
+                    transactionMapList = (ArrayList) messageSnapshot.child("monthlyTransactions").getValue();
+                    transactionList = new ArrayList<MonthlyTransaction>();
+                    if (transactionMapList != null) {
+                        for (HashMap transaction: transactionMapList) {
+                            dateRecorded = (String) transaction.get("dateRecorded");
+                            rewardPointCost = (long) transaction.get("pointCost");
+                            rewardDescription = (String) transaction.get("rewardDescription");
+                            rewardItem = (String) transaction.get("rewardItem");
+                            rewardPrice = ((Number) transaction.get("rewardPrice")).doubleValue();
+                            userEmail = (String) transaction.get("userEmail");
+
+                            monthlyTransaction = new MonthlyTransaction(dateRecorded, rewardPointCost, rewardDescription, rewardItem, rewardPrice, userEmail);
+                            transactionList.add(monthlyTransaction);
+
+                        }
+                    }
+
                     if (merchantType.equals("localMerchants")) {
-                        localMerchant = new LocalMerchant(city, description, companyName, streets, email, imgLoc, latitude, longitude, rewardList);
+                        localMerchant = new LocalMerchant(city, description, companyName, streets, email, imgLoc, latitude, longitude, rewardList, transactionList, key);
                         localMerchant.setDistance(mLocation);
                         if (localMerchant.getDistance() <= 25)
                             mLocalMerchantList.add(localMerchant);
                     }
                     else {
-                        onlineMerchant = new OnlineMerchant(description, companyName, email, imgLoc, rewardList);
+                        onlineMerchant = new OnlineMerchant(description, companyName, email, imgLoc, rewardList, transactionList, key);
                         mOnlineMerchantList.add(onlineMerchant);
                     }
 

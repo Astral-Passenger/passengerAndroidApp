@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class OnlineMerchant extends Merchant{
 
-    public OnlineMerchant(String description, String name, String email, String imgLoc, ArrayList<Reward> rewardList) {
-        super(description, name, email, imgLoc, rewardList);
+    public OnlineMerchant(String description, String name, String email, String imgLoc, ArrayList<Reward> rewardList, ArrayList<MonthlyTransaction> transactionList, String key) {
+        super(description, name, email, imgLoc, rewardList, transactionList, key);
     }
 
 }

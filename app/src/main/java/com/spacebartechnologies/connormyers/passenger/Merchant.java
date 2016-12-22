@@ -12,6 +12,8 @@ public class Merchant {
     private String mEmail;
     private String mImgLoc;
     private ArrayList<Reward> mRewardList;
+    private ArrayList<MonthlyTransaction> mTransactionList;
+    private String mKey;
 
     public Merchant() {
         mDescription = "";
@@ -19,14 +21,18 @@ public class Merchant {
         mEmail = "";
         mImgLoc = "";
         mRewardList = new ArrayList<Reward>();
+        mTransactionList = new ArrayList<MonthlyTransaction>();
+        mKey = "";
     }
 
-    public Merchant(String description, String name, String email, String imgLoc, ArrayList<Reward> rewardList) {
+    public Merchant(String description, String name, String email, String imgLoc, ArrayList<Reward> rewardList, ArrayList<MonthlyTransaction> transactionList, String key) {
         mDescription = description;
         mName = name;
         mEmail = email;
         mImgLoc = imgLoc;
         mRewardList = rewardList;
+        mTransactionList = transactionList;
+        mKey = key;
     }
 
     public String getDescription() {
@@ -50,8 +56,13 @@ public class Merchant {
     }
 
 
-
     public ArrayList<Reward> getRewardList() {
         return mRewardList;
+    }
+    public ArrayList<MonthlyTransaction> getTransactionList() {
+        return mTransactionList;
+    }
+    public String getKey() {
+        return mKey;
     }
 }

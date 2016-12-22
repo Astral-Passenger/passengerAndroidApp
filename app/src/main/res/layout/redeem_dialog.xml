@@ -6,16 +6,15 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/redeem_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        android:textSize="20sp"
-        android:text="SHOW TO TELLER" />
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/redeem_text"
         android:layout_margin="10sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/redeem_dialog"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -146,6 +146,14 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        mResetPasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
         mSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

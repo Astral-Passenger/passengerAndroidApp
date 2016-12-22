@@ -30,11 +30,15 @@ public class MerchantRewardsAdapter extends RecyclerView.Adapter<MerchantRewards
     StorageReference storageRef;
     String mMerchantImg;
     String mMerchantType;
+    String mMerchantKey;
+    ArrayList<MonthlyTransaction> mTransactionList;
 
-    public MerchantRewardsAdapter(ArrayList<Reward> rewardList, String merchantImg, String merchantType) {
+    public MerchantRewardsAdapter(ArrayList<Reward> rewardList, String merchantImg, String merchantType, String merchantKey, ArrayList<MonthlyTransaction> transactionList) {
         mRewardList = rewardList;
         mMerchantImg = merchantImg;
         mMerchantType = merchantType;
+        mMerchantKey = merchantKey;
+        mTransactionList = transactionList;
     }
 
     @Override
@@ -64,6 +68,8 @@ public class MerchantRewardsAdapter extends RecyclerView.Adapter<MerchantRewards
                 intent.putExtra("type", mMerchantType);
                 intent.putExtra("merchantImg", mMerchantImg);
                 intent.putParcelableArrayListExtra("rewardList", mRewardList);
+                intent.putParcelableArrayListExtra("monthlyTransactions", mTransactionList);
+                intent.putExtra("merchantKey", mMerchantKey);
                 context.startActivity(intent);
             }
         });

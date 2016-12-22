@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
@@ -17,9 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -96,12 +91,12 @@ public class SignIn extends AppCompatActivity {
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             // Get user information
                                             final String name = (String) dataSnapshot.child("name").getValue();
-                                            Double currentPoints = (Double) dataSnapshot.child("currentPoints").getValue();
+                                            Double currentPoints = ((Number)dataSnapshot.child("currentPoints").getValue()).doubleValue();
                                             final int currentPointsInt = (int) Math.floor(currentPoints);
-                                            final Double totalPoints = (Double) dataSnapshot.child("totalPoints").getValue();
+                                            final Double totalPoints = ((Number) dataSnapshot.child("totalPoints").getValue()).doubleValue();
                                             final int totalPointsInt = (int) Math.floor(totalPoints);
                                             final long rewardsReceived = (long) dataSnapshot.child("rewardsReceived").getValue();
-                                            final Double distanceTraveled = (Double) dataSnapshot.child("distanceTraveled").getValue();
+                                            final Double distanceTraveled = ((Number) dataSnapshot.child("distanceTraveled").getValue()).doubleValue();
                                             final long distanceTraveledInt = (long) Math.floor(distanceTraveled);
                                             final long timeSpentDriving = (long) dataSnapshot.child("timeSpentDriving").getValue();
                                             final String imageLocation = (String) dataSnapshot.child("imageLocation").getValue();
@@ -152,7 +147,7 @@ public class SignIn extends AppCompatActivity {
         mForgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignIn.this, ForgotPassword.class);
+                Intent intent = new Intent(SignIn.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
