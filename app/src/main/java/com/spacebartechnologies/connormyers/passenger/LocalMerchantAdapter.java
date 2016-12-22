@@ -55,6 +55,8 @@ public class LocalMerchantAdapter extends RecyclerView.Adapter<LocalMerchantAdap
             public void onClick(View view) {
                 Intent intent = new Intent(context, MerchantRewardsActivity.class);
                 intent.putParcelableArrayListExtra("rewardList", localMerchant.getRewardList());
+                intent.putParcelableArrayListExtra("monthlyTransactions", localMerchant.getTransactionList());
+                intent.putExtra("merchantKey", localMerchant.getKey());
                 intent.putExtra("merchantImg", localMerchant.getImgLoc());
                 intent.putExtra("type", "localMerchants");
                 context.startActivity(intent);

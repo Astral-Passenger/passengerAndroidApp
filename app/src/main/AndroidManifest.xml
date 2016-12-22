@@ -81,7 +81,7 @@
                 android:value="com.spacebartechnologies.connormyers.passenger.LoggedOutFirstScreen" />
         </activity>
         <activity
-            android:name=".ForgotPassword"
+            android:name=".ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
             android:parentActivityName=".SignIn"
             android:screenOrientation="portrait"
@@ -95,6 +95,11 @@
             android:label="@string/title_activity_profile_settings"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="ResetPassword"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"/>
         <activity
             android:name=".HelpAndSupport"
             android:label="@string/title_activity_help_and_support"

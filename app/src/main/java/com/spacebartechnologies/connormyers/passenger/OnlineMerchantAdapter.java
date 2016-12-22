@@ -56,6 +56,8 @@ public class OnlineMerchantAdapter extends RecyclerView.Adapter<OnlineMerchantAd
                 intent.putParcelableArrayListExtra("rewardList", onlineMerchant.getRewardList());
                 intent.putExtra("merchantImg", onlineMerchant.getImgLoc());
                 intent.putExtra("type", "onlineMerchants");
+                intent.putParcelableArrayListExtra("monthlyTransactions", onlineMerchant.getTransactionList());
+                intent.putExtra("merchantKey", onlineMerchant.getKey());
                 context.startActivity(intent);
             }
         });

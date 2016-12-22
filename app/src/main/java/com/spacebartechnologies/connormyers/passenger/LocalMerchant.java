@@ -17,9 +17,10 @@ public class LocalMerchant extends Merchant implements Comparable<LocalMerchant>
     private Location mLocation;
     private double mDistance;
 
-    public LocalMerchant(String city, String description, String name, String streets, String email, String imgLoc, double latitude, double longtitude, ArrayList<Reward> rewardList) {
+    public LocalMerchant(String city, String description, String name, String streets, String email, String imgLoc, double latitude, double longtitude,
+                         ArrayList<Reward> rewardList, ArrayList<MonthlyTransaction> transactionList, String key) {
 
-        super(description, name, email, imgLoc, rewardList);
+        super(description, name, email, imgLoc, rewardList, transactionList, key);
         mCity = city;
         mStreets = streets;
         mLatitude = latitude;

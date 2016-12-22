@@ -27,7 +27,8 @@ public class MerchantRewardsActivity extends AppCompatActivity {
     private ArrayList<Reward> mRewardList;
     private String merchantType;
     private String merchantImg;
-
+    private ArrayList<MonthlyTransaction> mMonthlyTransactionList;
+    private String merchantKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,8 @@ public class MerchantRewardsActivity extends AppCompatActivity {
         mRewardList = extras.getParcelableArrayList("rewardList");
         merchantType = extras.getString("type");
         merchantImg = extras.getString("merchantImg");
+        mMonthlyTransactionList = extras.getParcelableArrayList("monthlyTransactions");
+        merchantKey = extras.getString("merchantKey");
 
         mMerchantRewardsRecyclerView = (RecyclerView) findViewById(R.id.merchant_rewards_recycler_view);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
@@ -46,7 +49,7 @@ public class MerchantRewardsActivity extends AppCompatActivity {
         mMerchantRewardsRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 7, false));
 
         Collections.sort(mRewardList);
-        mMerchantRewardsAdapter = new MerchantRewardsAdapter(mRewardList, merchantImg, merchantType);
+        mMerchantRewardsAdapter = new MerchantRewardsAdapter(mRewardList, merchantImg, merchantType, merchantKey, mMonthlyTransactionList);
         mMerchantRewardsRecyclerView.setAdapter(mMerchantRewardsAdapter);
 
 
