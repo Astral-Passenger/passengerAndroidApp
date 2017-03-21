@@ -15,6 +15,7 @@ public class PassengerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Firebase.setAndroidContext(this);
     }
 
 }

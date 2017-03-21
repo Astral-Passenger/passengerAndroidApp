@@ -114,6 +114,7 @@
             android:name=".HelpFinal"
             android:label="@string/title_activity_help_final"
             android:theme="@style/MyMaterialTheme"></activity>
+        <service android:name=".DrivingService" android:enabled="true"/>
     </application>
 
 </manifest>

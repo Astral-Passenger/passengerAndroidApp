@@ -1,7 +1,10 @@
 package com.spacebartechnologies.connormyers.passenger;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,12 +25,19 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -45,10 +55,15 @@ public class MainActivity extends AppCompatActivity {
             "More"
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent drivingService = new Intent(MainActivity.this, DrivingService.class);
+        MainActivity.this.startService(drivingService);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -101,6 +116,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loadUserData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 
     private void loadUserData() {
@@ -164,4 +191,5 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
 }
